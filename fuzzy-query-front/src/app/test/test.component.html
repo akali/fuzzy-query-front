@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-center">
+  <div class="container" style="margin-top: 70px;">
+
+    <div class="row">
+
+      <div class="col-sm-8 offset-sm-2">
+
+        <div>
+          <h4>Import your database</h4>
+
+          <form [formGroup]="formGroup" novalidate (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <app-file-upload formControlName="file" [progress]="progress"></app-file-upload>
+              <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('file', 'required')">This field is required</ng-container>
+                <ng-container *ngIf="hasError('file', 'requiredFileType')">Only PNG 🤡</ng-container>
+              </div>
+              <small id="fileHelp" class="form-text text-muted">Enter your database file(SQLite)</small>
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="formGroup.invalid">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
